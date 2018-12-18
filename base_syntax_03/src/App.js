@@ -41,7 +41,7 @@ deletePersonHandler = (personIndex) => {
 
   render () {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1 px solid blue',
       padding: '8px',
@@ -53,24 +53,26 @@ deletePersonHandler = (personIndex) => {
     if (this.state.showPersons) {
       persons = (
         <div>
-        {this.state.persons.map((person, index) => {
-          return <Person
-            click = {()=> this.deletePersonHandler(index)}
-            name = {person.name}
-            age = {person.age}
-            key  = {person.id}
-            changed = {(event) => this.nameChangedHandler(event, person.id)}
-          />
+          {this.state.persons.map((person, index) => {
+            return <Person
+              click = {()=> this.deletePersonHandler(index)}
+              name = {person.name}
+              age = {person.age}
+              key  = {person.id}
+              changed = {(event) => this.nameChangedHandler(event, person.id)}
+            />
           })}
           </div>
           );
+        style.backgroundColor = 'red'
     }
 
     return (
       <div className="App">
         <button
-        style = {style}
-        onClick={() => this.togglePersonsHandler()}>Toggle Persons</button>
+          style = {style}
+          onClick={() => this.togglePersonsHandler()}>Toggle Persons
+        </button>
         {persons}
       </div>
     );
